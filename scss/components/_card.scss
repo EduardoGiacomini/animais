@@ -10,14 +10,60 @@
   width: 12rem;
   height: 12rem;
   margin: 1rem;
-  padding: 1rem;
+  cursor: pointer;
+  perspective: 100rem;
+}
+
+.card__inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
   border-radius: 8px;
   border: 1rem solid var(--color-primary-dark);
   background-color: var(--color-primary);
-  cursor: pointer;
+  transition: transform .75s;
+  transform-style: preserve-3d;
 }
 
-.card__image {
+.card:hover .card__inner {
+  transform: rotateY(180deg);
+}
+
+.card__inner--front, .card__inner--back {
+  position: absolute;
   width: 100%;
   height: 100%;
+  padding: 1rem;
+
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+
+.card__inner--front__image {
+  width: 100%;
+  height: 100%;
+}
+
+.card__inner--back {
+  text-align: center;
+  transform: rotateY(180deg);
+}
+
+.card__inner--back__image {
+  height: 75%;
+}
+
+.card__inner--back__text {
+  font-size: 1.4rem;
+  font-weight: 800;
+  letter-spacing: 2px;
+  color: var(--color-primary-dark);
+  text-shadow: 2px 0 0 var(--color-black),
+              -2px 0 0 var(--color-black),
+               0 2px 0 var(--color-black),
+               0 -2px 0 var(--color-black),
+               1px 1px var(--color-black),
+              -1px -1px 0 var(--color-black),
+               1px -1px 0 var(--color-black),
+              -1px 1px 0 var(--color-black);
 }
