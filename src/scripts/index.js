@@ -1,17 +1,11 @@
-const ANIMALS = [
-    "hen",
-    "cat"
-];
+import '../scss/main.scss'
+import { animals } from "./constants";
 
 function setup() {
-    for (const animal of ANIMALS) {
-        _setupAnimalElement(animal);
+    for (const animal of animals) {
+        const element = _createAnimalElementReference(animal);
+        _createAnimalElementEventListener(element, animal);
     }
-}
-
-function _setupAnimalElement(animal) {
-    const element = _createAnimalElementReference(animal)
-    _createAnimalElementEventListener(element, animal)
 }
 
 function _createAnimalElementReference(animal) {
@@ -19,14 +13,13 @@ function _createAnimalElementReference(animal) {
 }
 
 function _createAnimalElementEventListener(element, animal) {
-    console.log(element, animal)
     element.addEventListener("mouseenter", () => playAudio(animal));
 }
 
 function playAudio(animal) {
     const audioPath = _buildAudioPath(animal);
     const audio = new Audio(audioPath);
-    audio.play()
+    audio.play();
 }
 
 function _buildAudioPath(audioName) {
